@@ -24,3 +24,8 @@ beforeEach(async () => {
   await prisma.ticket.deleteMany();
   await prisma.event.deleteMany();
 });
+
+// Fechar a conexão Prisma após todos os testes
+afterAll(async () => {
+  await prisma.$disconnect();
+});
