@@ -2,7 +2,7 @@
 import { faker } from '@faker-js/faker';
 import { prisma } from '../setup';
 
-// Esta função cria um evento no banco
+// Função para criar um evento diretamente no banco
 export async function createEvent(params: { 
   name?: string;
   date?: Date;
@@ -18,7 +18,7 @@ export async function createEvent(params: {
   });
 }
 
-// Esta função gera dados para criar um evento (não cria no banco)
+// Função para gerar dados para criação de evento
 export function generateEventData(params: {
   name?: string;
   date?: Date;
@@ -27,4 +27,14 @@ export function generateEventData(params: {
     name: params.name || faker.word.words(3),
     date: params.date?.toISOString() || faker.date.future().toISOString()
   };
+}
+
+// Classe com método estático para compatibilidade com testes de tickets
+export class EventFactory {
+  static create() {
+    return {
+      name: faker.word.words(3),
+      date: faker.date.future().toISOString()
+    };
+  }
 }
