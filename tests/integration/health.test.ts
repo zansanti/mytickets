@@ -1,4 +1,7 @@
-import { testServer } from "../setup";
+import app from '../../src/index';
+import supertest from 'supertest';
+
+const testServer = supertest(app)
 
 describe("GET /health", () => {
   it("should return 200 and 'I'm okay!'", async () => {

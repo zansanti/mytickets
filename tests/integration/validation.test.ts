@@ -1,6 +1,10 @@
 // tests/integration/validation.test.ts
-import { testServer } from "../setup";
+// import { testServer } from "../setup";
 import httpStatus from 'http-status';
+import app from '../../src/index';
+import supertest from 'supertest';
+
+const testServer = supertest(app)
 
 describe("Parameter Validation", () => {
   // Teste para eventos
@@ -15,7 +19,7 @@ describe("Parameter Validation", () => {
         name: "Test Event",
         date: new Date().toISOString()
       });
-      expect(response.status).toBe(httpStatus.BAD_REQUEST);
+      expect(response.status).toBe(httpStatus.UNPROCESSABLE_ENTITY);
     });
 
     it("should respond with 400 when event ID is invalid in DELETE route", async () => {

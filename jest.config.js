@@ -2,11 +2,6 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   moduleFileExtensions: ['ts', 'js'],
-  transform: {
-    '^.+\\.(ts|tsx)$': ['ts-jest', { isolatedModules: true }]
-  },
-  testMatch: ['**/tests/**/*.test.ts'],
-  setupFilesAfterEnv: ['./tests/setup.ts'],
   collectCoverageFrom: [
     'src/**/*.ts',
     '!src/index.ts'
